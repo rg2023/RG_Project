@@ -1,2 +1,7 @@
-clickhouse-connect
+
+pandas
+requests
+minio
 pymongo
+clickhouse-driver
+pydantic
