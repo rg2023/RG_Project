@@ -1,0 +1,114 @@
+[2024-07-06T22:34:37.912+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-06T22:34:37.964+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: exchange_rate_dag.load_to_clickhouse manual__2024-07-06T21:01:53.885273+00:00 [queued]>
+[2024-07-06T22:34:37.987+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: exchange_rate_dag.load_to_clickhouse manual__2024-07-06T21:01:53.885273+00:00 [queued]>
+[2024-07-06T22:34:37.989+0000] {taskinstance.py:2306} INFO - Starting attempt 6 of 8
+[2024-07-06T22:34:38.016+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_to_clickhouse> on 2024-07-06 21:01:53.885273+00:00
+[2024-07-06T22:34:38.027+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=1321) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-06T22:34:38.032+0000] {standard_task_runner.py:63} INFO - Started process 1323 to run task
+[2024-07-06T22:34:38.033+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'exchange_rate_dag', 'load_to_clickhouse', 'manual__2024-07-06T21:01:53.885273+00:00', '--job-id', '71', '--raw', '--subdir', 'DAGS_FOLDER/my_dag.py', '--cfg-path', '/tmp/tmpp_8fow92']
+[2024-07-06T22:34:38.036+0000] {standard_task_runner.py:91} INFO - Job 71: Subtask load_to_clickhouse
+[2024-07-06T22:34:38.120+0000] {task_command.py:426} INFO - Running <TaskInstance: exchange_rate_dag.load_to_clickhouse manual__2024-07-06T21:01:53.885273+00:00 [running]> on host f7d3fdbe2e14
+[2024-07-06T22:34:38.364+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Rachel' AIRFLOW_CTX_DAG_ID='exchange_rate_dag' AIRFLOW_CTX_TASK_ID='load_to_clickhouse' AIRFLOW_CTX_EXECUTION_DATE='2024-07-06T21:01:53.885273+00:00' AIRFLOW_CTX_TRY_NUMBER='6' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-06T21:01:53.885273+00:00'
+[2024-07-06T22:34:38.368+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-06T22:34:38.382+0000] {connectionpool.py:874} WARNING - Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f912334b980>: Failed to establish a new connection: [Errno 111] Connection refused')': /rg-bucket?location=
+[2024-07-06T22:34:38.786+0000] {connectionpool.py:874} WARNING - Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f91231d4200>: Failed to establish a new connection: [Errno 111] Connection refused')': /rg-bucket?location=
+[2024-07-06T22:34:39.589+0000] {connectionpool.py:874} WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f91231d46e0>: Failed to establish a new connection: [Errno 111] Connection refused')': /rg-bucket?location=
+[2024-07-06T22:34:41.196+0000] {connectionpool.py:874} WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f91231d4a40>: Failed to establish a new connection: [Errno 111] Connection refused')': /rg-bucket?location=
+[2024-07-06T22:34:44.399+0000] {connectionpool.py:874} WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f91231d4ec0>: Failed to establish a new connection: [Errno 111] Connection refused')': /rg-bucket?location=
+[2024-07-06T22:34:44.408+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-06T22:34:44.413+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 400, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.12/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.12/http/client.py", line 1091, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.12/http/client.py", line 1035, in send
+    self.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 238, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f91231d53d0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/my_dag.py", line 30, in load_to_clickhouse
+    csv_data = fetch_from_minio()
+               ^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/storage.py", line 52, in fetch_from_minio
+    if minio_client.bucket_exists(bucket_name):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/minio/api.py", line 696, in bucket_exists
+    self._execute("HEAD", bucket_name)
+  File "/home/airflow/.local/lib/python3.12/site-packages/minio/api.py", line 437, in _execute
+    region = self._get_region(bucket_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/minio/api.py", line 494, in _get_region
+    response = self._url_open(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/minio/api.py", line 302, in _url_open
+    response = self._http.urlopen(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 877, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 877, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 877, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  [Previous line repeated 2 more times]
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=9000): Max retries exceeded with url: /rg-bucket?location= (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f91231d53d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2024-07-06T22:34:44.511+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=exchange_rate_dag, task_id=load_to_clickhouse, run_id=manual__2024-07-06T21:01:53.885273+00:00, execution_date=20240706T210153, start_date=20240706T223437, end_date=20240706T223444
+[2024-07-06T22:34:44.576+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 71 for task load_to_clickhouse (HTTPConnectionPool(host='localhost', port=9000): Max retries exceeded with url: /rg-bucket?location= (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f91231d53d0>: Failed to establish a new connection: [Errno 111] Connection refused')); 1323)
+[2024-07-06T22:34:44.616+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-06T22:34:44.730+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-06T22:34:44.737+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

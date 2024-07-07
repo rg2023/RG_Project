@@ -1,0 +1,22 @@
+[2024-07-06T23:44:06.786+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-06T23:44:06.827+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: exchange_rate_dag.create_clickhouse_table manual__2024-07-06T23:43:56.222900+00:00 [queued]>
+[2024-07-06T23:44:06.843+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: exchange_rate_dag.create_clickhouse_table manual__2024-07-06T23:43:56.222900+00:00 [queued]>
+[2024-07-06T23:44:06.845+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-06T23:44:06.875+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): create_clickhouse_table> on 2024-07-06 23:43:56.222900+00:00
+[2024-07-06T23:44:06.889+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=120) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-06T23:44:06.893+0000] {standard_task_runner.py:63} INFO - Started process 122 to run task
+[2024-07-06T23:44:06.895+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'exchange_rate_dag', 'create_clickhouse_table', 'manual__2024-07-06T23:43:56.222900+00:00', '--job-id', '93', '--raw', '--subdir', 'DAGS_FOLDER/my_dag.py', '--cfg-path', '/tmp/tmpev5ktv_w']
+[2024-07-06T23:44:06.899+0000] {standard_task_runner.py:91} INFO - Job 93: Subtask create_clickhouse_table
+[2024-07-06T23:44:07.024+0000] {task_command.py:426} INFO - Running <TaskInstance: exchange_rate_dag.create_clickhouse_table manual__2024-07-06T23:43:56.222900+00:00 [running]> on host b3dfbdb6a59d
+[2024-07-06T23:44:07.306+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Rachel' AIRFLOW_CTX_DAG_ID='exchange_rate_dag' AIRFLOW_CTX_TASK_ID='create_clickhouse_table' AIRFLOW_CTX_EXECUTION_DATE='2024-07-06T23:43:56.222900+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-06T23:43:56.222900+00:00'
+[2024-07-06T23:44:07.309+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-06T23:44:31.679+0000] {logging_mixin.py:188} INFO - Table 'exchange_rates' dropped successfully.
+[2024-07-06T23:44:32.053+0000] {logging_mixin.py:188} INFO - Table 'exchange_rates' created successfully.
+[2024-07-06T23:44:32.055+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-06T23:44:32.056+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-06T23:44:32.082+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=exchange_rate_dag, task_id=create_clickhouse_table, run_id=manual__2024-07-06T23:43:56.222900+00:00, execution_date=20240706T234356, start_date=20240706T234406, end_date=20240706T234432
+[2024-07-06T23:44:32.134+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-06T23:44:32.218+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-06T23:44:32.223+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
