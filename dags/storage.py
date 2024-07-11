@@ -5,16 +5,18 @@ import csv
 from exchange_rate import ExchangeRateData
 
 minio_client = Minio(
-    "localhost:9000", 
-    access_key="minioadmin",
-    secret_key="minioadmin",
+    "minio1:9000", 
+    access_key="ROOTUSER",
+    secret_key="CHANGEME123",
     secure=False
 )
 
-bucket_name = "rg-bucket"
+bucket_name = "r-bucket"
 file_name = "exchange_rate_data.csv"
 
 async def save_to_minio(exchange_rate_data: ExchangeRateData):
+
+
     data_dict = exchange_rate_data.to_dict()
     csv_file = io.StringIO()
     csv_writer = csv.writer(csv_file)

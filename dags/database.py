@@ -40,7 +40,7 @@ def insert_data_to_clickhouse(csv_data: str):
         password='0T~Xu.tMtqeui',
         secure=True
     )
-
+    create_clickhouse_table()
     rows = list(csv.DictReader(io.StringIO(csv_data)))
     columns = ['documentation', 'terms_of_use', 'time_last_update_unix', 'time_last_update_utc', 'time_next_update_unix', 'time_next_update_utc', 'base_currency', 'currency', 'rate']
     data_tuples = [(row['documentation'], row['terms_of_use'], int(row['time_last_update_unix']), datetime.strptime(row['time_last_update_utc'], '%Y-%m-%d %H:%M:%S'), int(row['time_next_update_unix']), datetime.strptime(row['time_next_update_utc'], '%Y-%m-%d %H:%M:%S'), row['base_code'], row['currency'], float(row['rate'])) for row in rows]
