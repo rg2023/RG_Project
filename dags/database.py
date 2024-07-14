@@ -7,7 +7,7 @@ import io
 client = get_client(
     host='m7mpjrqan6.europe-west4.gcp.clickhouse.cloud',
     user='default',
-    password='0T~Xu.tMtqeui',
+    password='dV1Fkjd3l~1df',
     secure=True
 )
 
